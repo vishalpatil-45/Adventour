@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Adventour</title>
+    <link rel="icon" href="./assets/files/logo.png">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <img src="./assets/files/logo.png" alt="Adventour" class="logo">
+        
+        <nav class="navbar">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#packages">Packages</a>
+            <a href="./index.html#locations">Locations</a>
+            <a href="./info.html">About</a>
+            <a href="./contact.html" class="active">Contact</a>
+        </nav>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search destinations...">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-bg">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Contact Background">
+        </div>
+        <div class="contact-hero-content">
+            <h1>Get in Touch</h1>
+            <p>We're here to help you plan your perfect adventure</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Let's Start a Conversation</h2>
+                <p>Have questions about our services, need help with a booking, or want to share feedback? We'd love to hear from you. Our team is here to help make your travel dreams come true.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Call Us</h3>
+                            <p>+1 (555) 123-4567</p>
+                            <span>Mon-Fri 9AM-6PM EST</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Email Us</h3>
+                            <p>hello@adventour.com</p>
+                            <span>We'll respond within 24 hours</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Visit Us</h3>
+                            <p>123 Travel Street</p>
+                            <span>New York, NY 10001</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="method-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="method-info">
+                            <h3>Live Chat</h3>
+                            <p>Available 24/7</p>
+                            <span>Get instant help online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-section">
+                <div class="form-container">
+                    <h2>Send us a Message</h2>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="booking">Booking Support</option>
+                                <option value="cancellation">Cancellation Request</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for travel tips and exclusive deals
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I book a stay?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply search for your destination, select your dates and number of guests, then choose from our curated selection of properties. Click on any property to view details and complete your booking.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is your cancellation policy?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our cancellation policy varies by property. Most bookings can be cancelled free of charge up to 24 hours before check-in. Check the specific property details for exact cancellation terms.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer 24/7 customer support?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Our customer support team is available 24/7 via live chat, email, and phone to assist you with any questions or issues during your stay.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I modify my booking?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can modify your booking by logging into your account or contacting our support team. Changes are subject to availability and may incur additional charges.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, debit cards, PayPal, and various digital wallets. All payments are processed securely through our encrypted payment system.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are there any hidden fees?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No hidden fees! The price you see includes all taxes and service fees. Any additional charges (like cleaning fees) are clearly displayed before you complete your booking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <h2>Find Us</h2>
+            <div class="map-placeholder">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Interactive map coming soon</p>
+                <span>123 Travel Street, New York, NY 10001</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety information</a></li>
+                    <li><a href="#">Cancellation options</a></li>
+                    <li><a href="#">Our COVID-19 Response</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#">Disaster relief housing</a></li>
+                    <li><a href="#">Support refugees</a></li>
+                    <li><a href="#">Combating discrimination</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Hosting</h4>
+                <ul>
+                    <li><a href="#">Try hosting</a></li>
+                    <li><a href="#">AirCover for Hosts</a></li>
+                    <li><a href="#">Explore hosting resources</a></li>
+                    <li><a href="#">Visit our community forum</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Adventour</h4>
+                <ul>
+                    <li><a href="#">Newsroom</a></li>
+                    <li><a href="#">New features</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Investors</a></li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Adventour, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Adventour</title>
+    <link rel="icon" href="./assets/files/logo.png">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/account.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <img src="./assets/files/logo.png" alt="Adventour" class="logo">
+        
+        <nav class="navbar">
+            <a href="./index.html">Home</a>
+            <a href="./index.html#packages">Packages</a>
+            <a href="./index.html#locations">Locations</a>
+            <a href="./info.html">About</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+
+        <div class="auth-buttons">
+            <a href="./account.html" class="auth-btn account-btn active">My Account</a>
+            <button class="auth-btn logout-btn" onclick="logout()">Log out</button>
+        </div>
+    </header>
+
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="account-container">
+            <div class="account-sidebar">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="./assets/files/default-avatar.png" alt="Profile" id="userAvatar">
+                        <div class="avatar-overlay">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <h3 id="userName">User Name</h3>
+                    <p id="userEmail">user@example.com</p>
+                </div>
+                <nav class="account-nav">
+                    <button class="nav-btn active" data-tab="bookings">My Bookings</button>
+                    <button class="nav-btn" data-tab="wishlist">Wishlist</button>
+                    <button class="nav-btn" data-tab="profile">Profile Settings</button>
+                </nav>
+            </div>
+
+            <div class="account-content">
+                <!-- Bookings Tab -->
+                <div class="tab-content active" id="bookings">
+                    <h2>My Bookings</h2>
+                    <div class="bookings-grid" id="bookingsGrid">
+                        <!-- Bookings will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Wishlist Tab -->
+                <div class="tab-content" id="wishlist">
+                    <h2>My Wishlist</h2>
+                    <div class="wishlist-grid" id="wishlistGrid">
+                        <!-- Wishlist items will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Profile Settings Tab -->
+                <div class="tab-content" id="profile">
+                    <h2>Profile Settings</h2>
+                    <form class="profile-form" id="profileForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label>Change Password</label>
+                            <input type="password" id="newPassword" placeholder="New Password">
+                        </div>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./assets/js/account.js"></script>
+</body>
+</html>

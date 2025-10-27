@@ -1,0 +1,489 @@
+/* Account Styles */
+:root {
+    --success: #22c55e;
+    --success-light: #dcfce7;
+    --danger: #ef4444;
+    --danger-light: #fee2e2;
+    --danger-dark: #dc2626;
+}
+.account-section {
+    padding: 120px 80px 80px;
+    min-height: 100vh;
+    background-color: var(--background-light);
+}
+
+.account-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.account-sidebar {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.user-info {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.user-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--background-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.avatar-overlay i {
+    font-size: 32px;
+    color: var(--white);
+}
+
+.user-avatar:hover .avatar-overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.account-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    text-align: left;
+    font-size: 16px;
+    color: var(--text-dark);
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    background: var(--background-light);
+}
+
+.nav-btn.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.account-content {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    box-shadow: var(--shadow);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.bookings-grid, .wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+/* Match package card style from main site */
+.wishlist-grid .package-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+}
+
+.wishlist-grid .package-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.wishlist-grid .package-image {
+    position: relative;
+    padding-top: 66.67%;
+    overflow: hidden;
+}
+
+.wishlist-grid .package-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.wishlist-grid .package-card:hover .package-image img {
+    transform: scale(1.05);
+}
+
+.wishlist-grid .package-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--white);
+    color: var(--text-dark);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.wishlist-grid .package-heart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-grid .package-content {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wishlist-grid .package-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.wishlist-grid .package-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.wishlist-grid .package-price {
+    font-size: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.wishlist-grid .package-price .price {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.wishlist-grid .package-price .period {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.wishlist-grid .package-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.wishlist-grid .stars {
+    color: var(--primary-color);
+}
+
+.wishlist-grid .package-rating span {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.booking-card {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.booking-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.booking-details {
+    padding: 20px;
+}
+
+.booking-details h3 {
+    margin-bottom: 10px;
+}
+
+.booking-details p {
+    color: var(--text-light);
+    margin: 5px 0;
+}
+
+.booking-details i {
+    margin-right: 8px;
+}
+
+.booking-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.booking-status.confirmed {
+    background: #e6f4ea;
+    color: #1e8e3e;
+}
+
+.booking-status.pending {
+    background: #fef7e0;
+    color: #b06000;
+}
+
+.profile-form {
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+.no-items {
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 40px;
+}
+
+/* Confirmation Dialog */
+.confirm-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.confirm-dialog-content {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cancel-booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--danger);
+    background: transparent;
+    color: var(--danger);
+    border-radius: var(--border-radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+.cancel-booking-btn:hover {
+    background: var(--danger);
+    color: var(--white);
+}
+
+/* Confirmation dialog action buttons */
+.confirm-dialog.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-secondary {
+    background: var(--background-light, #f5f5f5);
+    color: var(--text-dark, #333);
+    border: 1px solid var(--border-color, #e6e6e6);
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+.btn-secondary:hover {
+    background: var(--border-color, #e6e6e6);
+}
+
+.btn-danger {
+    background: var(--danger, #ef4444);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: var(--danger-dark, #dc2626);
+}
+
+/* Wishlist item styling */
+.wishlist-item {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    background: var(--white);
+}
+
+.wishlist-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.wishlist-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.wishlist-content {
+    padding: 20px;
+}
+
+.book-btn {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 16px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.book-btn:hover {
+    background: var(--primary-hover);
+}
+
+.wishlist-item .package-heart {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.wishlist-item .package-heart:hover {
+    background: var(--white);
+    transform: scale(1.1);
+}
+
+.wishlist-item .package-heart i {
+    color: #FF385C;
+    font-size: 18px;
+}
