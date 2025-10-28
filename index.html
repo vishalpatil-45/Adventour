@@ -2,574 +2,724 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventour - Find Your Perfect Stay</title>
+    <title>Adventour - Discover Amazing Places</title>
     <link rel="icon" href="./assets/files/logo.png">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/modern.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
 </head>
 <body>
-    <!-- Toast Notification -->
-    <div id="toast" class="toast"></div>
-    <!-- Header -->
-    <header class="header" id="header">
-        <img src="./assets/files/logo.png" alt="Adventour" class="logo">
-        
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#packages">Packages</a>
-            <a href="#locations">Locations</a>
-            <a href="./info.html">About</a>
-            <a href="./contact.html">Contact</a>
-        </nav>
 
-        <div class="auth-buttons">
-            <button class="auth-btn login-btn" onclick="openLoginModal()">Log in</button>
-            <button class="auth-btn signup-btn" onclick="openSignupModal()">Sign up</button>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home">
+                <img src="./assets/files/logo.png" class="logo" alt="Adventour Logo">
+            </a>
+            
+            <ul class="navbar">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="./info.html">About Us</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="#" id="loginBtn" class="btn btn-primary btn-sm">Login / Sign Up</a></li>
+                <li style="display: none;" id="accountLink"><a href="./account.html">My Account</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
-
+            </nav>
+              
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="./assets/files/bgvid.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <video class="hero-video" src="./assets/files/bgvid.mp4" autoplay muted loop></video>
         <div class="hero-overlay"></div>
+        
         <div class="hero-content">
-            <h1>Find your next adventure</h1>
-            <p>Discover amazing places to stay around the world</p>
+            <h1 class="hero-title" style="-webkit-text-stroke: 2px white; color: transparent; text-shadow: 0 0 20px rgba(0,0,0,0.5);">Adventure Awaits</h1>
+            <p class="hero-subtitle">Discover amazing destinations with budget-friendly packages. Start your journey today!</p>
             
-            <form class="search-form" id="searchForm">
-                <div class="search-field">
-                    <label>Where</label>
-                    <input type="text" id="destinationInput" placeholder="Search destinations" autocomplete="off">
-                    <div class="suggestions-dropdown" id="suggestionsDropdown"></div>
+            <!-- Modern Search Bar -->
+            <div class="search-container">
+                <form class="search-form" id="heroSearchForm">
+                    <div class="search-group">
+                        <label>Where</label>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search destination" required>
+                          </div>
+                          
+                    <div class="search-group">
+                        <label>Check-in</label>
+                        <input type="date" id="dateFrom" class="search-input" required>
+                        </div>
+                    
+                    <div class="search-group">
+                        <label>Check-out</label>
+                        <input type="date" id="dateTo" class="search-input" required>
+                        </div>
+                    
+                    <div class="search-group">
+                        <label>Budget</label>
+                        <div class="price-range-container">
+                            <input type="range" id="priceRange" class="price-range" min="0" max="833000" value="416000" step="8300">
+                            <div class="price-display">₹<span id="result">4,16,000</span></div>
+                        </div>
                 </div>
-                <div class="search-field">
-                    <label>Check in</label>
-                    <input type="date" id="checkInDate" min="2025-01-01" max="2025-12-31">
-                </div>
-                <div class="search-field">
-                    <label>Check out</label>
-                    <input type="date" id="checkOutDate" min="2025-01-01" max="2025-12-31">
-                </div>
-                <div class="search-field">
-                    <label>Guests</label>
-                    <select id="guestsSelect">
-                        <option value="1">1 guest</option>
-                        <option value="2">2 guests</option>
-                        <option value="3">3 guests</option>
-                        <option value="4">4+ guests</option>
-                    </select>
-                </div>
-                <button type="submit" class="search-submit">
-                    <i class="fas fa-search"></i>
-                    Search
-                </button>
-            </form>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="services">
-        <h2>Why choose Adventour?</h2>
-        <p>Discover unique stays and unforgettable experiences around the world</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Verified Stays</h3>
-                <p>Every property is personally verified for quality and safety</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Secure Booking</h3>
-                <p>Your payments are protected with industry-leading security</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-headset"></i>
-                </div>
-                <h3>24/7 Support</h3>
-                <p>Get help anytime with our dedicated customer service team</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <h3>Save Favorites</h3>
-                <p>Create wishlists and save your favorite properties for later</p>
+                    <button type="submit" class="search-btn">
+                        <i class='bx bx-search'></i>
+                        Search
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Packages Section -->
-    <section class="packages" id="packages">
-        <h2>Explore amazing stays</h2>
-        <p>Discover unique places to stay and things to do</p>
-        
-        <div class="filter-bar">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Beach</button>
-            <button class="filter-btn">Mountain</button>
-            <button class="filter-btn">City</button>
-            <button class="filter-btn">Luxury</button>
-            <button class="filter-btn">Tropical</button>
-            <button class="filter-btn">Historic</button>
-            <button class="filter-btn">Nature</button>
+    <!-- Featured Services -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose Adventour?</h2>
+            <p class="section-subtitle">We provide the best services to make your travel experience unforgettable</p>
         </div>
         
-        <div class="packages-grid">
-            <a href="./booking.html" class="package-card" data-category="beach" data-id="1">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Beach Villa">
-                    <div class="package-badge">Popular</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Goa, India
-                    </div>
-                    <h3 class="package-title">Luxury Beach Villa</h3>
-                    <div class="package-price">₹2,700 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★★</div>
-                        <span>4.8 (124 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="mountain" data-id="2">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mountain Cabin">
-                    <div class="package-badge">New</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Kashmir, India
-                    </div>
-                    <h3 class="package-title">Mountain Cabin Retreat</h3>
-                    <div class="package-price">₹4,999 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★☆</div>
-                        <span>4.6 (89 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="city" data-id="3">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="City Apartment">
-                    <div class="package-badge">Trending</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Mumbai, India
-                    </div>
-                    <h3 class="package-title">Modern City Apartment</h3>
-                    <div class="package-price">₹9,999 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★★</div>
-                        <span>4.9 (156 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="luxury" data-id="4">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dubai Luxury Resort">
-                    <div class="package-badge">Luxury</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Dubai, UAE
-                    </div>
-                    <h3 class="package-title">5-Star Luxury Resort</h3>
-                    <div class="package-price">₹30,000 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★★</div>
-                        <span>4.9 (203 reviews)</span>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="./booking.html" class="package-card" data-category="city" data-id="11">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mumbai Apartment">
-                    <div class="package-badge">City</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Mumbai, India
-                    </div>
-                    <h3 class="package-title">Luxury Mumbai Apartment</h3>
-                    <div class="package-price">₹8,500 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★☆</div>
-                        <span>4.6 (89 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="nature" data-id="8">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1538825574347-aea1e1f3b95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kerala Backwater Villa">
-                    <div class="package-badge">Nature</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Kerala, India
-                    </div>
-                    <h3 class="package-title">Kerala Backwater Villa</h3>
-                    <div class="package-price">₹12,000 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★★</div>
-                        <span>4.9 (134 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="luxury" data-id="15">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Burj Khalifa View Suite">
-                    <div class="package-badge">Luxury</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Dubai, UAE
-                    </div>
-                    <h3 class="package-title">Burj Khalifa View Suite</h3>
-                    <div class="package-price">₹45,000 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★★</div>
-                        <span>4.9 (203 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="tropical" data-id="16">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Bali Villa">
-                    <div class="package-badge">Tropical</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Bali, Indonesia
-                    </div>
-                    <h3 class="package-title">Private Beach Villa</h3>
-                    <div class="package-price">₹25,000 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★☆</div>
-                        <span>4.7 (156 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="historic" data-id="14">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Istanbul Hotel">
-                    <div class="package-badge">Historic</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Istanbul, Turkey
-                    </div>
-                    <h3 class="package-title">Historic City Center Hotel</h3>
-                    <div class="package-price">₹18,500 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★☆</div>
-                        <span>4.6 (98 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="beach" data-id="6">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Bali Villa">
-                    <div class="package-badge">Exotic</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Bali, Indonesia
-                    </div>
-                    <h3 class="package-title">Tropical Villa</h3>
-                    <div class="package-price">₹37,700 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★☆</div>
-                        <span>4.7 (98 reviews)</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="./booking.html" class="package-card" data-category="city" data-id="5">
-                <div class="package-image">
-                    <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Paris Apartment">
-                    <div class="package-badge">Romantic</div>
-                    <div class="package-heart">
-                        <i class="far fa-heart"></i>
-                    </div>
-                </div>
-                <div class="package-content">
-                    <div class="package-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Paris, France
-                    </div>
-                    <h3 class="package-title">Charming Paris Apartment</h3>
-                    <div class="package-price">₹47,500 / night</div>
-                    <div class="package-rating">
-                        <div class="stars">★★★★★</div>
-                        <span>4.8 (167 reviews)</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Locations Section -->
-    <section class="locations" id="locations">
-        <h2>Explore by location</h2>
-        <p>Discover amazing destinations around the world</p>
-        
-        <div class="locations-grid">
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kashmir">
-                <div class="location-overlay">
-                    <h3 class="location-title">Kashmir</h3>
-                    <p class="location-subtitle">India</p>
+        <div class="grid grid-4">
+            <div class="card service-card">
+                <div class="card-content" style="text-align: center;">
+                    <i class='bx bx-globe' style="font-size: 48px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">Best Destinations</h3>
+                    <p class="card-description">Explore handpicked destinations around the world with our expert guides</p>
                 </div>
             </div>
 
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Istanbul">
-                <div class="location-overlay">
-                    <h3 class="location-title">Istanbul</h3>
-                    <p class="location-subtitle">Turkey</p>
+            <div class="card service-card">
+                <div class="card-content" style="text-align: center;">
+                    <i class='bx bx-dollar-circle' style="font-size: 48px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">Best Prices</h3>
+                    <p class="card-description">Get the best deals and save money on your next adventure</p>
                 </div>
             </div>
 
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Bali">
-                <div class="location-overlay">
-                    <h3 class="location-title">Bali</h3>
-                    <p class="location-subtitle">Indonesia</p>
+            <div class="card service-card">
+                <div class="card-content" style="text-align: center;">
+                    <i class='bx bx-support' style="font-size: 48px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">24/7 Support</h3>
+                    <p class="card-description">Our dedicated team is available round the clock for your assistance</p>
                 </div>
             </div>
 
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dubai">
-                <div class="location-overlay">
-                    <h3 class="location-title">Dubai</h3>
-                    <p class="location-subtitle">UAE</p>
-                </div>
-            </div>
-
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Geneva">
-                <div class="location-overlay">
-                    <h3 class="location-title">Geneva</h3>
-                    <p class="location-subtitle">Switzerland</p>
-                </div>
-            </div>
-
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Paris">
-                <div class="location-overlay">
-                    <h3 class="location-title">Paris</h3>
-                    <p class="location-subtitle">France</p>
-                </div>
-            </div>
-
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mumbai">
-                <div class="location-overlay">
-                    <h3 class="location-title">Mumbai</h3>
-                    <p class="location-subtitle">India</p>
-                </div>
-            </div>
-
-            <div class="location-card">
-                <img src="https://images.unsplash.com/photo-1522030299830-16b38d2359ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kerala">
-                <div class="location-overlay">
-                    <h3 class="location-title">Kerala</h3>
-                    <p class="location-subtitle">India</p>
+            <div class="card service-card">
+                <div class="card-content" style="text-align: center;">
+                    <i class='bx bx-shield-quarter' style="font-size: 48px; color: var(--primary-color); margin-bottom: 20px;"></i>
+                    <h3 class="card-title">Secure Booking</h3>
+                    <p class="card-description">Book with confidence knowing your trip is protected and secured</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <h2>Stay in the loop</h2>
-        <p>Get the latest travel deals and destination inspiration</p>
+    <!-- Featured Packages -->
+    <section class="container" id="packages">
+        <div class="section-header">
+            <h2 class="section-title">Popular Packages</h2>
+            <p class="section-subtitle">Handpicked tour packages for an amazing experience</p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Destinations</button>
+            <button class="filter-btn" data-filter="beach">🏖️ Beach</button>
+            <button class="filter-btn" data-filter="mountain">⛰️ Mountain</button>
+            <button class="filter-btn" data-filter="city">🏙️ City</button>
+            <button class="filter-btn" data-filter="adventure">🎿 Adventure</button>
+            <button class="filter-btn" data-filter="cultural">🏛️ Cultural</button>
+            </div>
+
+        <div class="grid grid-3">
+            <!-- Package Card 1 -->
+            <div class="card package-card" data-category="beach" data-price="208000" data-rating="4.8" data-destination="bali" data-id="1">
+                <div class="card-image-container">
+                    <img src="./assets/files/pac1.jpg" alt="Bali Paradise" class="card-image">
+                    <div class="card-badge">20% OFF</div>
+                    <button class="favorite-btn" data-id="1">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Bali Paradise</h3>
+                            <p class="card-subtitle">Indonesia • 7 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Experience the beauty of Bali with pristine beaches, ancient temples, and vibrant culture. Includes accommodation and daily breakfast.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹2,08,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Package Card 2 -->
+            <div class="card package-card" data-category="mountain" data-price="266000" data-rating="4.9" data-destination="switzerland" data-id="2">
+                <div class="card-image-container">
+                    <img src="./assets/files/pac3.jpg" alt="Swiss Alps Adventure" class="card-image">
+                    <div class="card-badge">Popular</div>
+                    <button class="favorite-btn" data-id="2">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Swiss Alps Adventure</h3>
+                            <p class="card-subtitle">Switzerland • 6 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Explore stunning mountain landscapes, charming villages, and world-class skiing resorts. Perfect for adventure seekers!
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹2,66,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Package Card 3 -->
+            <div class="card package-card" data-category="cultural" data-price="150000" data-rating="4.7" data-destination="rome" data-id="3">
+                <div class="card-image-container">
+                    <img src="./assets/files/pac7.jpg" alt="Roman Heritage" class="card-image">
+                    <button class="favorite-btn" data-id="3">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Roman Heritage</h3>
+                            <p class="card-subtitle">Italy • 5 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Immerse yourself in ancient history and Italian culture. Visit the Colosseum, Vatican, and enjoy authentic Italian cuisine.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹1,50,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Package Card 4 -->
+            <div class="card package-card" data-category="city" data-price="233000" data-rating="4.8" data-destination="tokyo" data-id="4">
+                <div class="card-image-container">
+                    <img src="./assets/files/pac2.1.jpg" alt="Tokyo Experience" class="card-image">
+                    <button class="favorite-btn" data-id="4">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Tokyo Experience</h3>
+                            <p class="card-subtitle">Japan • 6 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Discover the perfect blend of tradition and modernity in Japan's capital. From ancient temples to neon-lit streets.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹2,33,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package Card 5 -->
+            <div class="card package-card" data-category="beach" data-price="183000" data-rating="4.6" data-destination="maldives" data-id="5">
+                <div class="card-image-container">
+                    <img src="./assets/files/pac2.3.jpg" alt="Maldives Getaway" class="card-image">
+                    <div class="card-badge">Luxury</div>
+                    <button class="favorite-btn" data-id="5">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Maldives Getaway</h3>
+                            <p class="card-subtitle">Maldives • 5 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Relax in paradise with crystal-clear waters, overwater bungalows, and world-class diving experiences.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹1,83,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+                </div>
+            </div>
+
+            <!-- Package Card 6 -->
+            <div class="card package-card" data-category="adventure" data-price="291000" data-rating="4.9" data-destination="new-zealand" data-id="6">
+                <div class="card-image-container">
+                    <img src="./assets/files/pac2.4.webp" alt="New Zealand Adventure" class="card-image">
+                    <button class="favorite-btn" data-id="6">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">New Zealand Adventure</h3>
+                            <p class="card-subtitle">New Zealand • 8 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Experience thrilling adventures with bungee jumping, skydiving, and exploring breathtaking landscapes.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹2,91,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Package Card 7 -->
+            <div class="card package-card" data-category="beach" data-price="158000" data-rating="4.7" data-destination="thailand" data-id="7">
+                <div class="card-image-container">
+                    <img src="./assets/files/pack2.2.jpg" alt="Thailand Islands" class="card-image">
+                    <div class="card-badge">Best Deal</div>
+                    <button class="favorite-btn" data-id="7">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Thailand Islands</h3>
+                            <p class="card-subtitle">Thailand • 7 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Island hopping adventure in Phuket and Krabi with crystal-clear waters, limestone cliffs, and beach parties.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹1,58,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Package Card 8 -->
+            <div class="card package-card" data-category="city" data-price="224000" data-rating="4.8" data-destination="dubai" data-id="8">
+                <div class="card-image-container">
+                    <img src="./assets/files/pack5.1.jpg" alt="Dubai Luxury" class="card-image">
+                    <button class="favorite-btn" data-id="8">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Dubai Luxury</h3>
+                            <p class="card-subtitle">UAE • 5 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Experience ultra-modern architecture, luxury shopping, desert safaris, and world-class dining experiences.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹2,24,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Package Card 9 -->
+            <div class="card package-card" data-category="cultural" data-price="200000" data-rating="4.6" data-destination="egypt" data-id="9">
+                <div class="card-image-container">
+                    <img src="./assets/files/pack5.2.jpg" alt="Egypt Wonders" class="card-image">
+                    <button class="favorite-btn" data-id="9">
+                        <i class='bx bx-heart'></i>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Egypt Wonders</h3>
+                            <p class="card-subtitle">Egypt • 7 Days</p>
+                        </div>
+                        <div class="card-rating">
+                            <i class='bx bxs-star rating-star'></i>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                    <p class="card-description">
+                        Journey through ancient history with pyramids, Sphinx, Nile cruises, and stunning temples of Luxor.
+                    </p>
+                    <div class="card-footer">
+                        <div class="card-price">
+                            <span class="card-price-amount">₹2,00,000</span>
+                            <span class="card-price-unit">/ person</span>
+                        </div>
+                        <a href="./package.html" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email address">
-            <button type="submit">Subscribe</button>
-        </form>
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="./package.html" class="btn btn-primary btn-lg">View All Packages</a>
+        </div>
+    </section>
+
+    <!-- Popular Locations -->
+    <section class="container" style="background: var(--bg-light);" id="locations">
+        <div class="section-header">
+            <h2 class="section-title">Popular Destinations</h2>
+            <p class="section-subtitle">Explore the world's most beautiful and sought-after travel destinations</p>
+            </div>
+
+        <div class="grid grid-4">
+            <div class="card location-card" data-id="paris">
+                <div class="card-image-container">
+                    <img src="./assets/files/l1.jpg" alt="Paris" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Paris</h3>
+                    <p class="card-subtitle">France</p>
+                    <p class="card-description">The City of Light awaits with iconic landmarks and romantic atmosphere</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+                </div>
+            </div>
+
+            <div class="card location-card" data-id="dubai">
+                <div class="card-image-container">
+                    <img src="./assets/files/l2.jpg" alt="Dubai" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Dubai</h3>
+                    <p class="card-subtitle">UAE</p>
+                    <p class="card-description">Modern luxury meets Arabian culture in this desert oasis</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+                </div>
+            </div>
+
+            <div class="card location-card" data-id="bali">
+                <div class="card-image-container">
+                    <img src="./assets/files/l3.jpg" alt="Bali" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Bali</h3>
+                    <p class="card-subtitle">Indonesia</p>
+                    <p class="card-description">Tropical paradise with stunning beaches and rich culture</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+                </div>
+            </div>
+
+            <div class="card location-card" data-id="london">
+                <div class="card-image-container">
+                    <img src="./assets/files/l4.jpg" alt="London" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">London</h3>
+                    <p class="card-subtitle">England</p>
+                    <p class="card-description">Historic charm meets modern vibrancy in Britain's capital</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+                </div>
+            </div>
+            
+            <div class="card location-card" data-id="sydney">
+                <div class="card-image-container">
+                    <img src="./assets/files/l5.jpg" alt="Sydney" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Sydney</h3>
+                    <p class="card-subtitle">Australia</p>
+                    <p class="card-description">Harbor city with iconic opera house and beautiful beaches</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+                </div>
+            </div>
+            
+            <div class="card location-card" data-id="santorini">
+                <div class="card-image-container">
+                    <img src="./assets/files/l6.jpg" alt="Santorini" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Santorini</h3>
+                    <p class="card-subtitle">Greece</p>
+                    <p class="card-description">Whitewashed buildings and stunning sunsets over the Aegean</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+                </div>
+            </div>
+            
+            <div class="card location-card" data-id="new-york">
+                <div class="card-image-container">
+                    <img src="./assets/files/l7.jpg" alt="New York" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">New York</h3>
+                    <p class="card-subtitle">USA</p>
+                    <p class="card-description">The city that never sleeps with endless attractions</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+                </div>
+            </div>
+
+            <div class="card location-card" data-id="barcelona">
+                <div class="card-image-container">
+                    <img src="./assets/files/l8.jpg" alt="Barcelona" class="card-image">
+            </div>
+                <div class="card-content">
+                    <h3 class="card-title">Barcelona</h3>
+                    <p class="card-subtitle">Spain</p>
+                    <p class="card-description">Architectural wonders and Mediterranean charm combined</p>
+                    <a href="./locations.html" class="btn btn-outline btn-sm">Explore</a>
+            </div>
+            </div>
+            </div>
+
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="./locations.html" class="btn btn-primary btn-lg">View All Destinations</a>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="container">
+        <div style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); border-radius: var(--radius-xl); padding: var(--space-3xl); text-align: center; color: white;">
+            <h2 style="color: white; font-size: var(--text-4xl); margin-bottom: var(--space-lg);">Ready to Start Your Adventure?</h2>
+            <p style="font-size: var(--text-lg); margin-bottom: var(--space-2xl); color: rgba(255,255,255,0.9);">
+                Book your dream vacation today and create memories that last a lifetime
+            </p>
+            <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                <a href="./booking.html" class="btn btn-lg" style="background: white; color: var(--primary-color);">Book Now</a>
+                <a href="./contact.html" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Contact Us</a>
+        </div>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Safety information</a></li>
-                    <li><a href="#">Cancellation options</a></li>
-                    <li><a href="#">Our COVID-19 Response</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Community</h4>
-                <ul>
-                    <li><a href="#">Disaster relief housing</a></li>
-                    <li><a href="#">Support refugees</a></li>
-                    <li><a href="#">Combating discrimination</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Hosting</h4>
-                <ul>
-                    <li><a href="#">Try hosting</a></li>
-                    <li><a href="#">AirCover for Hosts</a></li>
-                    <li><a href="#">Explore hosting resources</a></li>
-                    <li><a href="#">Visit our community forum</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Adventour</h4>
-                <ul>
-                    <li><a href="#">Newsroom</a></li>
-                    <li><a href="#">New features</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Investors</a></li>
-                </ul>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <img src="./assets/files/logo.png" alt="Adventour" style="height: 40px; margin-bottom: 20px;">
+                    <p style="color: rgba(255,255,255,0.8);">
+                        Your trusted partner for unforgettable travel experiences around the world.
+                    </p>
+                    <div class="social-links">
+                        <a href="info.html" class="social-link"><i class='bx bxl-facebook'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-instagram'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-twitter'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-github'></i></a>
+                    </div>
+                </div>
                 
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="./package.html">Packages</a></li>
+                        <li><a href="./locations.html">Destinations</a></li>
+                        <li><a href="./info.html">About Us</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Information</a></li>
+                        <li><a href="#">Cancellation Options</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><a href="mailto:info@adventour.com">info@adventour.com</a></li>
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li style="color: rgba(255,255,255,0.8);">123 Travel Street<br>Adventure City, AC 12345</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Adventour, Inc. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Adventour All Rights Reserved.<br>Website developed by: SIT Students</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeLoginModal()">&times;</span>
-            <h2>Welcome back</h2>
-            <form class="auth-form" id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" name="email" required>
+    <!-- Login/Signup Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <button class="modal-close" id="closeAuthModal">&times;</button>
+            
+            <div id="loginForm" style="display: block;">
+                <div class="modal-header">
+                    <h2 class="modal-title">Welcome Back</h2>
+                    <p style="color: var(--text-secondary);">Login to access your account</p>
                 </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" name="password" required>
+                
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: var(--space-md);">
+                        Login
+                    </button>
+                    
+                    <button type="button" class="btn btn-secondary btn-lg" id="continueAsGuest" style="width: 100%; margin-bottom: var(--space-md);">
+                        Continue as Guest
+                    </button>
+                    
+                    <p style="text-align: center; color: var(--text-secondary);">
+                        Don't have an account? 
+                        <a href="#" id="showSignup" style="color: var(--primary-color); font-weight: 600;">Sign Up</a>
+                    </p>
+                </form>
+            </div>
+            
+            <div id="signupForm" style="display: none;">
+                <div class="modal-header">
+                    <h2 class="modal-title">Create Account</h2>
+                    <p style="color: var(--text-secondary);">Join Adventour today</p>
                 </div>
-                <button type="submit" class="auth-submit-btn">Log in</button>
-                <p class="auth-switch">Don't have an account? <a href="#" onclick="switchToSignup()">Sign up</a></p>
-            </form>
+                
+                <form id="signupFormElement">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" placeholder="John" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Create a password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-input" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: var(--space-md);">
+                        Create Account
+                    </button>
+                    
+                    <button type="button" class="btn btn-secondary btn-lg" id="continueAsGuestSignup" style="width: 100%; margin-bottom: var(--space-md);">
+                        Continue as Guest
+                    </button>
+                    
+                    <p style="text-align: center; color: var(--text-secondary);">
+                        Already have an account? 
+                        <a href="#" id="showLogin" style="color: var(--primary-color); font-weight: 600;">Login</a>
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- Signup Modal -->
-    <div id="signupModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeSignupModal()">&times;</span>
-            <h2>Create your account</h2>
-            <form class="auth-form" id="signupForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="signupFirstName">First Name</label>
-                        <input type="text" id="signupFirstName" name="firstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupLastName">Last Name</label>
-                        <input type="text" id="signupLastName" name="lastName" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="signupEmail">Email</label>
-                    <input type="email" id="signupEmail" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-                </div>
-                <button type="submit" class="auth-submit-btn">Sign up</button>
-                <p class="auth-switch">Already have an account? <a href="#" onclick="switchToLogin()">Log in</a></p>
-            </form>
-        </div>
-    </div>
-
+    <!-- JavaScript Files -->
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/filters_new.js"></script>
+    <script src="./assets/js/search.js"></script>
+    <script src="./assets/js/carousel.js"></script>
     <script src="./assets/js/auth.js"></script>
-    <script src="./assets/js/index.js"></script>
 </body>
 </html>
