@@ -2,225 +2,176 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Adventour</title>
     <link rel="icon" href="./assets/files/logo.png">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/modern.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <img src="./assets/files/logo.png" alt="Adventour" class="logo">
-        
-        <nav class="navbar">
-            <a href="./index.html">Home</a>
-            <a href="./index.html#packages">Packages</a>
-            <a href="./index.html#locations">Locations</a>
-            <a href="./info.html">About</a>
-            <a href="./contact.html" class="active">Contact</a>
-        </nav>
 
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search destinations...">
-            <button class="search-button">
-                <i class="fas fa-search"></i>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="./index.html">
+                <img src="./assets/files/logo.png" class="logo" alt="Adventour Logo">
+            </a>
+            
+            <ul class="navbar">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./package.html">Packages</a></li>
+                <li><a href="./locations.html">Locations</a></li>
+                <li><a href="./info.html">About Us</a></li>
+                <li><a href="./contact.html" class="active">Contact</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Contact Hero Section -->
-    <section class="contact-hero">
-        <div class="contact-hero-bg">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Contact Background">
-        </div>
-        <div class="contact-hero-content">
-            <h1>Get in Touch</h1>
-            <p>We're here to help you plan your perfect adventure</p>
+    <!-- Page Header -->
+    <section style="padding-top: 120px; padding-bottom: 40px; background: linear-gradient(135deg, var(--secondary-color), #00857A);">
+        <div class="container">
+            <h1 style="font-size: var(--text-5xl); font-weight: 700; margin-bottom: var(--space-md); color: white;">Get in Touch</h1>
+            <p style="font-size: var(--text-lg); color: rgba(255,255,255,0.9);">We're here to help you plan your perfect adventure</p>
         </div>
     </section>
 
-    <!-- Contact Content -->
-    <section class="contact-content">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Let's Start a Conversation</h2>
-                <p>Have questions about our services, need help with a booking, or want to share feedback? We'd love to hear from you. Our team is here to help make your travel dreams come true.</p>
+    <!-- Contact Section -->
+    <section class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: start;">
+            <!-- Contact Form -->
+            <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                <h2 style="margin-bottom: var(--space-xl);">Send Us a Message</h2>
                 
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="method-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="method-info">
-                            <h3>Call Us</h3>
-                            <p>+1 (555) 123-4567</p>
-                            <span>Mon-Fri 9AM-6PM EST</span>
-                        </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Your Name *</label>
+                        <input type="text" class="form-input" placeholder="John Doe" required>
                     </div>
                     
-                    <div class="contact-method">
-                        <div class="method-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="method-info">
-                            <h3>Email Us</h3>
-                            <p>hello@adventour.com</p>
-                            <span>We'll respond within 24 hours</span>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" class="form-input" placeholder="john@example.com" required>
                     </div>
                     
-                    <div class="contact-method">
-                        <div class="method-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="method-info">
-                            <h3>Visit Us</h3>
-                            <p>123 Travel Street</p>
-                            <span>New York, NY 10001</span>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" placeholder="+1 (234) 567-8900">
                     </div>
                     
-                    <div class="contact-method">
-                        <div class="method-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="method-info">
-                            <h3>Live Chat</h3>
-                            <p>Available 24/7</p>
-                            <span>Get instant help online</span>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject *</label>
+                        <select class="form-select" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="booking">Booking Question</option>
+                            <option value="package">Package Information</option>
+                            <option value="support">Customer Support</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Message *</label>
+                        <textarea class="form-textarea" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                        <i class='bx bx-send'></i>
+                        Send Message
+                    </button>
+                </form>
             </div>
             
-            <div class="contact-form-section">
-                <div class="form-container">
-                    <h2>Send us a Message</h2>
-                    <form class="contact-form" id="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required>
+            <!-- Contact Information -->
+            <div>
+                <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: var(--space-lg);">
+                    <h3 style="margin-bottom: var(--space-xl);">Contact Information</h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: var(--space-xl);">
+                        <div style="display: flex; gap: var(--space-lg); align-items: start;">
+                            <div style="width: 48px; height: 48px; background: rgba(255, 56, 92, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class='bx bx-phone' style="font-size: 24px; color: var(--primary-color);"></i>
                             </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone">
+                            <div>
+                                <h4 style="margin-bottom: var(--space-xs);">Phone</h4>
+                                <p style="color: var(--text-secondary); margin: 0;">+1 (234) 567-8900</p>
+                                <p style="color: var(--text-secondary); margin: 0;">Mon-Fri: 9AM - 6PM EST</p>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="general">General Inquiry</option>
-                                <option value="booking">Booking Support</option>
-                                <option value="cancellation">Cancellation Request</option>
-                                <option value="feedback">Feedback</option>
-                                <option value="partnership">Partnership</option>
-                                <option value="other">Other</option>
-                            </select>
+                        <div style="display: flex; gap: var(--space-lg); align-items: start;">
+                            <div style="width: 48px; height: 48px; background: rgba(255, 56, 92, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class='bx bx-envelope' style="font-size: 24px; color: var(--primary-color);"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: var(--space-xs);">Email</h4>
+                                <p style="color: var(--text-secondary); margin: 0;">info@adventour.com</p>
+                                <p style="color: var(--text-secondary); margin: 0;">support@adventour.com</p>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                        <div style="display: flex; gap: var(--space-lg); align-items: start;">
+                            <div style="width: 48px; height: 48px; background: rgba(255, 56, 92, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class='bx bx-map' style="font-size: 24px; color: var(--primary-color);"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: var(--space-xs);">Office</h4>
+                                <p style="color: var(--text-secondary); margin: 0;">123 Travel Street</p>
+                                <p style="color: var(--text-secondary); margin: 0;">Adventure City, AC 12345</p>
+                                <p style="color: var(--text-secondary); margin: 0;">United States</p>
+                            </div>
                         </div>
                         
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="newsletter" name="newsletter">
-                                <span class="checkmark"></span>
-                                Subscribe to our newsletter for travel tips and exclusive deals
-                            </label>
+                        <div style="display: flex; gap: var(--space-lg); align-items: start;">
+                            <div style="width: 48px; height: 48px; background: rgba(255, 56, 92, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class='bx bx-time-five' style="font-size: 24px; color: var(--primary-color);"></i>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: var(--space-xs);">Business Hours</h4>
+                                <p style="color: var(--text-secondary); margin: 0;">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p style="color: var(--text-secondary); margin: 0;">Saturday: 10:00 AM - 4:00 PM</p>
+                                <p style="color: var(--text-secondary); margin: 0;">Sunday: Closed</p>
+                            </div>
                         </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="faq-container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do I book a stay?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Simply search for your destination, select your dates and number of guests, then choose from our curated selection of properties. Click on any property to view details and complete your booking.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What is your cancellation policy?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our cancellation policy varies by property. Most bookings can be cancelled free of charge up to 24 hours before check-in. Check the specific property details for exact cancellation terms.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Do you offer 24/7 customer support?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes! Our customer support team is available 24/7 via live chat, email, and phone to assist you with any questions or issues during your stay.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do I modify my booking?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You can modify your booking by logging into your account or contacting our support team. Changes are subject to availability and may incur additional charges.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What payment methods do you accept?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We accept all major credit cards, debit cards, PayPal, and various digital wallets. All payments are processed securely through our encrypted payment system.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Are there any hidden fees?</h3>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>No hidden fees! The price you see includes all taxes and service fees. Any additional charges (like cleaning fees) are clearly displayed before you complete your booking.</p>
+                <div style="background: var(--bg-light); padding: var(--space-2xl); border-radius: var(--radius-lg);">
+                    <h4 style="margin-bottom: var(--space-lg);">Follow Us</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">Stay connected with us on social media for travel tips, deals, and inspiration.</p>
+                    <div class="social-links">
+                        <a href="info.html" class="social-link" style="background: var(--primary-color); color: white;">
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a href="info.html" class="social-link" style="background: var(--primary-color); color: white;">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                        <a href="info.html" class="social-link" style="background: var(--primary-color); color: white;">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                        <a href="info.html" class="social-link" style="background: var(--primary-color); color: white;">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="info.html" class="social-link" style="background: var(--primary-color); color: white;">
+                            <i class='bx bxl-github'></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -228,73 +179,154 @@
     </section>
 
     <!-- Map Section -->
-    <section class="map-section">
-        <div class="map-container">
-            <h2>Find Us</h2>
-            <div class="map-placeholder">
-                <i class="fas fa-map-marker-alt"></i>
-                <p>Interactive map coming soon</p>
-                <span>123 Travel Street, New York, NY 10001</span>
+    <section class="container">
+        <div style="background: var(--bg-light); padding: var(--space-2xl); border-radius: var(--radius-lg); text-align: center;">
+            <h2 style="margin-bottom: var(--space-lg);">Visit Our Office</h2>
+            <p style="color: var(--text-secondary); margin-bottom: var(--space-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+                Drop by our office to discuss your travel plans in person. Our travel experts are ready to help you create your dream vacation.
+            </p>
+            <div style="width: 100%; height: 400px; background: var(--border-light); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center;">
+                    <i class='bx bx-map' style="font-size: 64px; color: var(--text-light); margin-bottom: var(--space-md);"></i>
+                    <p style="color: var(--text-secondary);">Interactive map would be displayed here</p>
+                    <p style="color: var(--text-light); font-size: var(--text-sm);">123 Travel Street, Adventure City, AC 12345</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions</p>
+        </div>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+                <details style="border-bottom: 1px solid var(--border-light);">
+                    <summary style="padding: var(--space-xl); cursor: pointer; font-weight: 600; font-size: var(--text-lg);">
+                        How do I book a package?
+                    </summary>
+                    <div style="padding: 0 var(--space-xl) var(--space-xl);">
+                        <p style="color: var(--text-secondary);">
+                            Simply browse our packages, select your preferred destination, click "Book Now", and follow the step-by-step booking process. You'll receive a confirmation email immediately after completing your booking.
+                        </p>
+                    </div>
+                </details>
+                
+                <details style="border-bottom: 1px solid var(--border-light);">
+                    <summary style="padding: var(--space-xl); cursor: pointer; font-weight: 600; font-size: var(--text-lg);">
+                        What payment methods do you accept?
+                    </summary>
+                    <div style="padding: 0 var(--space-xl) var(--space-xl);">
+                        <p style="color: var(--text-secondary);">
+                            We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. All payments are processed securely through our encrypted payment gateway.
+                        </p>
+                    </div>
+                </details>
+                
+                <details style="border-bottom: 1px solid var(--border-light);">
+                    <summary style="padding: var(--space-xl); cursor: pointer; font-weight: 600; font-size: var(--text-lg);">
+                        What is your cancellation policy?
+                    </summary>
+                    <div style="padding: 0 var(--space-xl) var(--space-xl);">
+                        <p style="color: var(--text-secondary);">
+                            Full refund if cancelled 30+ days before departure, 50% refund for 15-30 days, and no refund for cancellations within 15 days of departure. Travel insurance is available for more flexible options.
+                        </p>
+                    </div>
+                </details>
+                
+                <details style="border-bottom: 1px solid var(--border-light);">
+                    <summary style="padding: var(--space-xl); cursor: pointer; font-weight: 600; font-size: var(--text-lg);">
+                        Do you offer travel insurance?
+                    </summary>
+                    <div style="padding: 0 var(--space-xl) var(--space-xl);">
+                        <p style="color: var(--text-secondary);">
+                            Yes, we offer comprehensive travel insurance that covers trip cancellation, medical emergencies, lost luggage, and more. You can add insurance during the booking process.
+                        </p>
+                    </div>
+                </details>
+                
+                <details>
+                    <summary style="padding: var(--space-xl); cursor: pointer; font-weight: 600; font-size: var(--text-lg);">
+                        Can I customize a package?
+                    </summary>
+                    <div style="padding: 0 var(--space-xl) var(--space-xl);">
+                        <p style="color: var(--text-secondary);">
+                            Absolutely! Contact us and our travel experts will work with you to create a customized itinerary that matches your preferences, budget, and travel dates.
+                        </p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Safety information</a></li>
-                    <li><a href="#">Cancellation options</a></li>
-                    <li><a href="#">Our COVID-19 Response</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Community</h4>
-                <ul>
-                    <li><a href="#">Disaster relief housing</a></li>
-                    <li><a href="#">Support refugees</a></li>
-                    <li><a href="#">Combating discrimination</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Hosting</h4>
-                <ul>
-                    <li><a href="#">Try hosting</a></li>
-                    <li><a href="#">AirCover for Hosts</a></li>
-                    <li><a href="#">Explore hosting resources</a></li>
-                    <li><a href="#">Visit our community forum</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Adventour</h4>
-                <ul>
-                    <li><a href="#">Newsroom</a></li>
-                    <li><a href="#">New features</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Investors</a></li>
-                </ul>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <img src="./assets/files/logo.png" alt="Adventour" style="height: 40px; margin-bottom: 20px;">
+                    <p style="color: rgba(255,255,255,0.8);">
+                        Your trusted partner for unforgettable travel experiences around the world.
+                    </p>
+                    <div class="social-links">
+                        <a href="info.html" class="social-link"><i class='bx bxl-facebook'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-instagram'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-twitter'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-github'></i></a>
+                    </div>
+                </div>
                 
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./package.html">Packages</a></li>
+                        <li><a href="./locations.html">Destinations</a></li>
+                        <li><a href="./info.html">About Us</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Information</a></li>
+                        <li><a href="#">Cancellation Options</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><a href="mailto:info@adventour.com">info@adventour.com</a></li>
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li style="color: rgba(255,255,255,0.8);">123 Travel Street<br>Adventure City, AC 12345</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Adventour, Inc. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Adventour All Rights Reserved.<br>Website developed by: SIT Students</p>
+            </div>
         </div>
     </footer>
 
+    <!-- JavaScript Files -->
     <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/contact.js"></script>
+    <script>
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
