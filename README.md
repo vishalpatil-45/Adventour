@@ -68,7 +68,6 @@ Adventour/
 └── README.md
 </pre>
 
-*(Using `<pre>` tags ensures perfect alignment on GitHub preview.)*
 
 ---
 
