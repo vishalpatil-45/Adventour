@@ -39,6 +39,8 @@ This project showcases clean UI/UX design, responsive layouts, and smooth intera
 ---
 
 ## 📁 Folder Structure
+
+<pre>
 Adventour/
 │
 ├── index.html
@@ -64,18 +66,20 @@ Adventour/
 │   │   └── ... (other images)
 │
 └── README.md
+</pre>
 
+*(Using `<pre>` tags ensures perfect alignment on GitHub preview.)*
+
+---
 
 ## 🧭 How to Run the Project
 1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/<your-username>/adventour.git
-
-
-Open the project folder in your code editor.
+2. Open the project folder in your code editor.
 
 Launch the website:
 
 Open index.html directly in your browser, or
 
 Run with VS Code Live Server extension.
+   ```bash
+   git clone https://github.com/<your-username>/adventour.git
