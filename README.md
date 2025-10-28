@@ -49,20 +49,22 @@ Adventour/
 ├── booking.html
 │
 ├── assets/
-│ ├── css/
-│ │ ├── modern.css
-│ │ ├── components.css
-│ ├── js/
-│ │ ├── main.js
-│ │ ├── booking.js
-│ ├── files/
-│ │ ├── logo.png
-│ │ ├── l1.jpg ... (and other images)
+│   ├── css/
+│   │   ├── modern.css
+│   │   ├── components.css
+│   │
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── booking.js
+│   │
+│   ├── files/
+│   │   ├── logo.png
+│   │   ├── l1.jpg
+│   │   ├── l2.jpg
+│   │   └── ... (other images)
 │
 └── README.md
 
-
----
 
 ## 🧭 How to Run the Project
 1. **Clone the repository:**
