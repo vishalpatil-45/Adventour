@@ -2,300 +2,599 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Your Stay - Adventour</title>
+    <title>Book Your Trip - Adventour</title>
     <link rel="icon" href="./assets/files/logo.png">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/booking.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/modern.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    
+    <style>
+        .booking-step {
+            display: none;
+            animation: fadeInSlide 0.4s ease-out;
+        }
+        
+        .booking-step:first-child {
+            display: block;
+        }
+        
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: var(--space-2xl);
+            align-items: start;
+        }
+        
+        @media (max-width: 1024px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-summary {
+                position: static !important;
+            }
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--space-md);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: var(--text-base);
+            font-family: var(--font-primary);
+            transition: all var(--transition-fast);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.1);
+        }
+        
+        .booking-success {
+            text-align: center;
+            padding: var(--space-3xl);
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin: 0 auto var(--space-xl);
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        .booking-id {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: var(--space-xl) 0;
+            padding: var(--space-lg);
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-top: var(--space-2xl);
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <img src="./assets/files/logo.png" alt="Adventour" class="logo">
-        
-        <nav class="navbar">
-            <a href="./index.html">Home</a>
-            <a href="./index.html#packages">Packages</a>
-            <a href="./index.html#locations">Locations</a>
-            <a href="./info.html">About</a>
-            <a href="./contact.html">Contact</a>
-        </nav>
 
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search destinations...">
-            <button class="search-button">
-                <i class="fas fa-search"></i>
+    <!-- Navigation Bar -->
+        <nav>
+        <div class="nav-container">
+            <a href="./index.html">
+                <img src="./assets/files/logo.png" class="logo" alt="Adventour Logo">
+            </a>
+            
+            <ul class="navbar">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./package.html">Packages</a></li>
+                <li><a href="./locations.html">Locations</a></li>
+                <li><a href="./info.html">About Us</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
-    </header>
+        </nav>
+
+    <!-- Page Header -->
+    <section style="padding-top: 120px; padding-bottom: 40px; background: var(--bg-light);">
+        <div class="container">
+            <h1 style="font-size: var(--text-5xl); font-weight: 700; margin-bottom: var(--space-md);">Book Your Adventure</h1>
+            <p style="font-size: var(--text-lg); color: var(--text-secondary);">Complete your booking in just a few simple steps</p>
+        </div>
+    </section>
 
     <!-- Booking Section -->
-    <section class="booking-section">
-        <div class="booking-container">
-            <div class="booking-header">
-                <h1>Complete your booking</h1>
-                <p>Fill in your details to secure your perfect stay</p>
+    <section class="container">
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="progress-bar-fill" style="width: 0%;"></div>
+            
+            <div class="step-indicator active">
+                <div class="step-circle">1</div>
+                <span class="step-label">Trip Details</span>
             </div>
-
-            <div class="booking-content">
-                <!-- Property Summary -->
-                <div class="property-summary" id="property-summary">
-                    <div class="property-image">
-                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Property">
-                    </div>
-                    <div class="property-details">
-                        <h3>Luxury Beach Villa</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Goa, India</p>
-                        <div class="property-rating">
-                            <div class="stars">★★★★★</div>
-                            <span>4.8 (124 reviews)</span>
+            
+            <div class="step-indicator">
+                <div class="step-circle">2</div>
+                <span class="step-label">Guests & Rooms</span>
+            </div>
+            
+            <div class="step-indicator">
+                <div class="step-circle">3</div>
+                <span class="step-label">Personal Info</span>
+            </div>
+            
+            <div class="step-indicator">
+                <div class="step-circle">4</div>
+                <span class="step-label">Payment</span>
+            </div>
+        </div>
+        
+        <div class="booking-container">
+            <!-- Booking Form -->
+            <div class="booking-form">
+                <!-- Step 1: Trip Details -->
+                <div class="booking-step" style="display: block;">
+                    <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: var(--space-xl);">Select Your Trip Details</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Selected Package</label>
+                            <div style="padding: var(--space-lg); background: var(--bg-light); border-radius: var(--radius-md); font-weight: 600; color: var(--primary-color);" id="selectedPackage">
+                                Select a package from our packages page
+                            </div>
                         </div>
-                        <div class="property-price">
-                            <span class="price">₹2,700</span>
-                            <span class="period">/ night</span>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Destination *</label>
+                            <input type="text" class="form-control" placeholder="Enter destination" required>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-lg);">
+                            <div class="form-group">
+                                <label class="form-label">Check-in Date *</label>
+                                <input type="date" id="dateFrom" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Check-out Date *</label>
+                                <input type="date" id="dateTo" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: flex-end; margin-top: var(--space-2xl);">
+                            <button class="btn btn-primary btn-lg btn-next">
+                                Next Step
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Booking Form -->
-                <form class="booking-form" id="booking-form">
-                    <div class="form-section">
-                        <h3>Your Information</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required>
+                
+                <!-- Step 2: Guests & Rooms -->
+                <div class="booking-step">
+                    <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: var(--space-xl);">Guests & Accommodation</h2>
+                        
+                        <div style="margin-bottom: var(--space-2xl);">
+                            <label class="form-label" style="margin-bottom: var(--space-lg);">Number of Guests</label>
+                            
+                            <div class="guest-selector">
+                                <div class="guest-label">
+                                    <div class="guest-label-title">Adults</div>
+                                    <div class="guest-label-subtitle">Ages 13+</div>
+                                </div>
+                                <div class="guest-controls">
+                                    <button type="button" class="guest-btn" id="adultsMinus">−</button>
+                                    <input type="number" id="adultsCount" value="1" min="1" max="20" readonly style="border: none; background: none; width: 40px; text-align: center; font-weight: 600;">
+                                    <button type="button" class="guest-btn" id="adultsPlus">+</button>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required>
+                            
+                            <div class="guest-selector" style="margin-top: var(--space-md);">
+                                <div class="guest-label">
+                                    <div class="guest-label-title">Children</div>
+                                    <div class="guest-label-subtitle">Ages 2-12</div>
+                                </div>
+                                <div class="guest-controls">
+                                    <button type="button" class="guest-btn" id="childrenMinus">−</button>
+                                    <input type="number" id="childrenCount" value="0" min="0" max="20" readonly style="border: none; background: none; width: 40px; text-align: center; font-weight: 600;">
+                                    <button type="button" class="guest-btn" id="childrenPlus">+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="guest-selector" style="margin-top: var(--space-md);">
+                                <div class="guest-label">
+                                    <div class="guest-label-title">Infants</div>
+                                    <div class="guest-label-subtitle">Under 2</div>
+                                </div>
+                                <div class="guest-controls">
+                                    <button type="button" class="guest-btn" id="infantsMinus">−</button>
+                                    <input type="number" id="infantsCount" value="0" min="0" max="5" readonly style="border: none; background: none; width: 40px; text-align: center; font-weight: 600;">
+                                    <button type="button" class="guest-btn" id="infantsPlus">+</button>
+                                </div>
+                            </div>
+    </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Room Type *</label>
+                            <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+                                <label style="display: flex; align-items: center; padding: var(--space-lg); border: 2px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);">
+                                    <input type="radio" name="roomType" value="standard" checked style="margin-right: var(--space-md);">
+                                    <div style="flex: 1;">
+                                        <strong>Standard Room</strong>
+                                        <p style="color: var(--text-secondary); font-size: var(--text-sm); margin: 0;">Basic amenities, comfortable stay</p>
+                                    </div>
+                                    <div style="font-weight: 600; color: var(--primary-color);">Included</div>
+                </label>
+
+                                <label style="display: flex; align-items: center; padding: var(--space-lg); border: 2px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);">
+                                    <input type="radio" name="roomType" value="deluxe" style="margin-right: var(--space-md);">
+                                    <div style="flex: 1;">
+                                <strong>Deluxe Room</strong>
+                                <p style="color: var(--text-secondary); font-size: var(--text-sm); margin: 0;">Premium amenities, extra space</p>
+                            </div>
+                            <div style="font-weight: 600; color: var(--primary-color);">+₹25,000</div>
+                </label>
+
+                                <label style="display: flex; align-items: center; padding: var(--space-lg); border: 2px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition-fast);">
+                                    <input type="radio" name="roomType" value="suite" style="margin-right: var(--space-md);">
+                                    <div style="flex: 1;">
+                                <strong>Suite</strong>
+                                <p style="color: var(--text-secondary); font-size: var(--text-sm); margin: 0;">Luxury experience, best amenities</p>
+                            </div>
+                            <div style="font-weight: 600; color: var(--primary-color);">+₹50,000</div>
+                </label>
                             </div>
                         </div>
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3>Travel Dates</h3>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="checkIn">Check-in Date *</label>
-                                <input type="date" id="checkIn" name="checkIn" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="checkOut">Check-out Date *</label>
-                                <input type="date" id="checkOut" name="checkOut" required>
+                        <div class="form-group">
+                            <label class="form-label">Add-ons (Optional)</label>
+                            <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                                <label style="display: flex; align-items: center; padding: var(--space-md); cursor: pointer;">
+                                    <input type="checkbox" class="addon-checkbox" data-addon="airport" data-price="8300" style="margin-right: var(--space-md);">
+                                    <span>Airport Transfers (+₹8,300)</span>
+                        </label>
+                                <label style="display: flex; align-items: center; padding: var(--space-md); cursor: pointer;">
+                                    <input type="checkbox" class="addon-checkbox" data-addon="insurance" data-price="12500" style="margin-right: var(--space-md);">
+                                    <span>Travel Insurance (+₹12,500)</span>
+                    </label>
+                                <label style="display: flex; align-items: center; padding: var(--space-md); cursor: pointer;">
+                                    <input type="checkbox" class="addon-checkbox" data-addon="guide" data-price="16600" style="margin-right: var(--space-md);">
+                                    <span>Personal Guide (+₹16,600)</span>
+                </label>
                             </div>
                         </div>
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="guests">Number of Guests *</label>
-                                <select id="guests" name="guests" required>
-                                    <option value="">Select guests</option>
-                                    <option value="1">1 guest</option>
-                                    <option value="2">2 guests</option>
-                                    <option value="3">3 guests</option>
-                                    <option value="4">4 guests</option>
-                                    <option value="5">5+ guests</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="rooms">Number of Rooms *</label>
-                                <select id="rooms" name="rooms" required>
-                                    <option value="">Select rooms</option>
-                                    <option value="1">1 room</option>
-                                    <option value="2">2 rooms</option>
-                                    <option value="3">3 rooms</option>
-                                    <option value="4">4+ rooms</option>
-                                </select>
-                            </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: var(--space-2xl);">
+                            <button class="btn btn-secondary btn-lg btn-prev">
+                                <i class='bx bx-left-arrow-alt'></i>
+                                Previous
+                            </button>
+                            <button class="btn btn-primary btn-lg btn-next">
+                                Next Step
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
                         </div>
                     </div>
-
-                    <div class="form-section">
-                        <h3>Accommodation Preferences</h3>
-                        <div class="form-group">
-                            <label>Room Type *</label>
-                            <div class="radio-group">
-                                <label class="radio-option">
-                                    <input type="radio" name="roomType" value="single" required>
-                                    <span class="radio-custom"></span>
-                                    Single Room
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="roomType" value="double" required>
-                                    <span class="radio-custom"></span>
-                                    Double Room
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="roomType" value="triple" required>
-                                    <span class="radio-custom"></span>
-                                    Triple Room
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="roomType" value="suite" required>
-                                    <span class="radio-custom"></span>
-                                    Suite
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="accommodation">Accommodation Type *</label>
-                            <select id="accommodation" name="accommodation" required>
-                                <option value="">Select type</option>
-                                <option value="hotel">Hotel</option>
-                                <option value="resort">Resort</option>
-                                <option value="villa">Villa</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="hostel">Hostel</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="specialRequests">Special Requests</label>
-                            <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requirements or requests..."></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3>Payment Information</h3>
-                        <div class="form-group">
-                            <label for="paymentMethod">Payment Method *</label>
-                            <select id="paymentMethod" name="paymentMethod" required>
-                                <option value="">Select payment method</option>
-                                <option value="credit">Credit Card</option>
-                                <option value="debit">Debit Card</option>
-                                <option value="upi">UPI</option>
-                                <option value="netbanking">Net Banking</option>
-                                <option value="wallet">Digital Wallet</option>
-                            </select>
-                        </div>
+    </div>
+       
+                <!-- Step 3: Personal Information -->
+                <div class="booking-step">
+                    <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: var(--space-xl);">Your Information</h2>
                         
-                        <div class="form-row">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-lg);">
                             <div class="form-group">
-                                <label for="cardNumber">Card Number</label>
-                                <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" class="form-control" data-personal-info="firstName" placeholder="John" required>
                             </div>
+                            
                             <div class="form-group">
-                                <label for="expiryDate">Expiry Date</label>
-                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" class="form-control" data-personal-info="lastName" placeholder="Doe" required>
                             </div>
                         </div>
                         
-                        <div class="form-row">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-lg);">
                             <div class="form-group">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" name="cvv" placeholder="123">
-                            </div>
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" data-personal-info="email" placeholder="john@example.com" required>
+            </div>
+
                             <div class="form-group">
-                                <label for="cardName">Name on Card</label>
-                                <input type="text" id="cardName" name="cardName" placeholder="John Doe">
+                                <label class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" data-personal-info="phone" placeholder="+1 (234) 567-8900" required>
+                </div>
+            </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Address *</label>
+                            <input type="text" class="form-control" data-personal-info="address" placeholder="123 Main Street" required>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-lg);">
+                            <div class="form-group">
+                                <label class="form-label">City *</label>
+                                <input type="text" class="form-control" data-personal-info="city" placeholder="New York" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Country *</label>
+                                <input type="text" class="form-control" data-personal-info="country" placeholder="United States" required>
+        </div>
+    </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Special Requests (Optional)</label>
+                            <textarea class="form-control" rows="4" placeholder="Any special requirements or preferences?"></textarea>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-top: var(--space-2xl);">
+                            <button class="btn btn-secondary btn-lg btn-prev">
+                                <i class='bx bx-left-arrow-alt'></i>
+                                Previous
+                            </button>
+                            <button class="btn btn-primary btn-lg btn-next">
+                                Next Step
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                        </div>
+                    </div>
+    </div>
+                
+                <!-- Step 4: Payment -->
+                <div class="booking-step">
+                    <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: var(--space-xl);">Payment Details</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Payment Method *</label>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-bottom: var(--space-xl);">
+                                <label style="display: flex; flex-direction: column; align-items: center; padding: var(--space-lg); border: 2px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer;">
+                                    <input type="radio" name="paymentMethod" value="credit-card" checked style="margin-bottom: var(--space-sm);">
+                                    <i class='bx bx-credit-card' style="font-size: 32px; color: var(--primary-color); margin-bottom: var(--space-sm);"></i>
+                                    <span style="font-size: var(--text-sm);">Credit Card</span>
+                                </label>
+                                
+                                <label style="display: flex; flex-direction: column; align-items: center; padding: var(--space-lg); border: 2px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer;">
+                                    <input type="radio" name="paymentMethod" value="paypal" style="margin-bottom: var(--space-sm);">
+                                    <i class='bx bxl-paypal' style="font-size: 32px; color: var(--primary-color); margin-bottom: var(--space-sm);"></i>
+                                    <span style="font-size: var(--text-sm);">PayPal</span>
+                                </label>
+                                
+                                <label style="display: flex; flex-direction: column; align-items: center; padding: var(--space-lg); border: 2px solid var(--border-light); border-radius: var(--radius-md); cursor: pointer;">
+                                    <input type="radio" name="paymentMethod" value="bank" style="margin-bottom: var(--space-sm);">
+                                    <i class='bx bx-bank' style="font-size: 32px; color: var(--primary-color); margin-bottom: var(--space-sm);"></i>
+                                    <span style="font-size: var(--text-sm);">Bank Transfer</span>
+                                </label>
                             </div>
                         </div>
+                        
+                        <div class="payment-form-section payment-form-credit-card">
+                            <div class="form-group">
+                                <label class="form-label">Card Number *</label>
+                                <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Cardholder Name *</label>
+                                <input type="text" class="form-control" placeholder="John Doe" required>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+                                <div class="form-group">
+                                    <label class="form-label">Expiry Date *</label>
+                                    <input type="text" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">CVV *</label>
+                                    <input type="text" class="form-control" placeholder="123" maxlength="3" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-form-section payment-form-paypal" style="display: none;">
+                            <div style="text-align: center; padding: var(--space-2xl); background: var(--bg-light); border-radius: var(--radius-md);">
+                                <i class='bx bxl-paypal' style="font-size: 64px; color: #00457C; margin-bottom: var(--space-md);"></i>
+                                <p>You will be redirected to PayPal to complete your payment securely.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-form-section payment-form-bank" style="display: none;">
+                            <div style="padding: var(--space-xl); background: var(--bg-light); border-radius: var(--radius-md);">
+                                <p style="margin-bottom: var(--space-md);">Please transfer the amount to:</p>
+                                <p style="margin-bottom: var(--space-sm);"><strong>Bank Name:</strong> Adventour Bank</p>
+                                <p style="margin-bottom: var(--space-sm);"><strong>Account Number:</strong> 1234567890</p>
+                                <p style="margin-bottom: var(--space-sm);"><strong>SWIFT Code:</strong> ADVTUS33</p>
+                                <p style="color: var(--text-secondary); font-size: var(--text-sm); margin-top: var(--space-md);">
+                                    Please include your booking reference in the transfer details.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: var(--space-xl); padding: var(--space-lg); background: var(--bg-light); border-radius: var(--radius-md);">
+                            <label style="display: flex; align-items: start; cursor: pointer;">
+                                <input type="checkbox" required style="margin-right: var(--space-md); margin-top: 4px;">
+                                <span style="font-size: var(--text-sm); color: var(--text-secondary);">
+                                    I agree to the <a href="#" style="color: var(--primary-color);">Terms and Conditions</a> 
+                                    and <a href="#" style="color: var(--primary-color);">Privacy Policy</a>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-top: var(--space-2xl);">
+                            <button class="btn btn-secondary btn-lg btn-prev">
+                                <i class='bx bx-left-arrow-alt'></i>
+                                Previous
+                            </button>
+                            <button id="confirmBooking" class="btn btn-primary btn-lg">
+                                <i class='bx bx-check-circle'></i>
+                                Confirm Booking
+                            </button>
+                        </div>
                     </div>
-
-                    <div class="booking-summary">
-                        <h3>Booking Summary</h3>
-                        <div class="summary-item">
-                            <span>Base price (3 nights)</span>
-                            <span>₹8,100</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Service fee</span>
-                            <span>₹810</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Taxes</span>
-                            <span>₹1,200</span>
-                        </div>
-                        <div class="summary-item total">
-                            <span>Total</span>
-                            <span>₹10,110</span>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" class="btn-secondary" onclick="window.history.back()">Back</button>
-                        <button type="submit" class="btn-primary">
-                            <i class="fas fa-credit-card"></i>
-                            Complete Booking
-                        </button>
-                    </div>
-                </form>
+                </div>
+            </div>
+            
+            <!-- Price Summary Sidebar -->
+            <div class="price-summary" data-package-price="208000">
+                <h3 style="margin-bottom: var(--space-xl);">Booking Summary</h3>
+                
+                <div class="price-summary-row">
+                    <span class="price-summary-label">Base Price</span>
+                    <span class="price-summary-value" id="basePriceDisplay">₹2,08,000</span>
+                </div>
+                
+                <div class="price-summary-row">
+                    <span class="price-summary-label">Duration</span>
+                    <span class="price-summary-value"><span id="daysDisplay">1</span> days</span>
+                </div>
+                
+                <div class="price-summary-row">
+                    <span class="price-summary-label">Guests</span>
+                    <span class="price-summary-value"><span id="guestsDisplay">1</span> guests</span>
+                </div>
+                
+                <div class="price-summary-row">
+                    <span class="price-summary-label">Subtotal</span>
+                    <span class="price-summary-value" id="subtotalDisplay">₹2,08,000</span>
+                </div>
+                
+                <div class="price-summary-row">
+                    <span class="price-summary-label">Add-ons</span>
+                    <span class="price-summary-value" id="addonsDisplay">₹0</span>
+                </div>
+                
+                <div class="price-summary-row">
+                    <span class="price-summary-label">Tax (18% GST)</span>
+                    <span class="price-summary-value" id="taxDisplay">₹37,440</span>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="price-summary-total">
+                    <span>Total</span>
+                    <span id="totalDisplay">₹2,45,440</span>
+                </div>
+                
+                <div style="margin-top: var(--space-xl); padding: var(--space-md); background: rgba(255, 56, 92, 0.1); border-radius: var(--radius-md); text-align: center;">
+                    <p style="font-size: var(--text-sm); color: var(--primary-color); margin: 0; font-weight: 500;">
+                        <i class='bx bx-shield-quarter'></i>
+                        Secure Payment • Full Refund Available
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Safety information</a></li>
-                    <li><a href="#">Cancellation options</a></li>
-                    <li><a href="#">Our COVID-19 Response</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Community</h4>
-                <ul>
-                    <li><a href="#">Disaster relief housing</a></li>
-                    <li><a href="#">Support refugees</a></li>
-                    <li><a href="#">Combating discrimination</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Hosting</h4>
-                <ul>
-                    <li><a href="#">Try hosting</a></li>
-                    <li><a href="#">AirCover for Hosts</a></li>
-                    <li><a href="#">Explore hosting resources</a></li>
-                    <li><a href="#">Visit our community forum</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h4>Adventour</h4>
-                <ul>
-                    <li><a href="#">Newsroom</a></li>
-                    <li><a href="#">New features</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Investors</a></li>
-                </ul>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <img src="./assets/files/logo.png" alt="Adventour" style="height: 40px; margin-bottom: 20px;">
+                    <p style="color: rgba(255,255,255,0.8);">
+                        Your trusted partner for unforgettable travel experiences around the world.
+                    </p>
+                    <div class="social-links">
+                        <a href="info.html" class="social-link"><i class='bx bxl-facebook'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-instagram'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-twitter'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-github'></i></a>
+                    </div>
+                </div>
                 
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./package.html">Packages</a></li>
+                        <li><a href="./locations.html">Destinations</a></li>
+                        <li><a href="./info.html">About Us</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Information</a></li>
+                        <li><a href="#">Cancellation Options</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><a href="mailto:info@adventour.com">info@adventour.com</a></li>
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li style="color: rgba(255,255,255,0.8);">123 Travel Street<br>Adventure City, AC 12345</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 Adventour, Inc. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Adventour All Rights Reserved.<br>Website developed by: SIT Students</p>
+            </div>
         </div>
     </footer>
 
+    <!-- JavaScript Files -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/booking.js"></script>
 </body>
