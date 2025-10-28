@@ -2,100 +2,377 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account - Adventour</title>
     <link rel="icon" href="./assets/files/logo.png">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/account.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/modern.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <img src="./assets/files/logo.png" alt="Adventour" class="logo">
-        
-        <nav class="navbar">
-            <a href="./index.html">Home</a>
-            <a href="./index.html#packages">Packages</a>
-            <a href="./index.html#locations">Locations</a>
-            <a href="./info.html">About</a>
-            <a href="./contact.html">Contact</a>
-        </nav>
 
-        <div class="auth-buttons">
-            <a href="./account.html" class="auth-btn account-btn active">My Account</a>
-            <button class="auth-btn logout-btn" onclick="logout()">Log out</button>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="./index.html">
+                <img src="./assets/files/logo.png" class="logo" alt="Adventour Logo">
+            </a>
+            
+            <ul class="navbar">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./package.html">Packages</a></li>
+                <li><a href="./locations.html">Locations</a></li>
+                <li><a href="./info.html">About Us</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="#" id="loginBtn" class="btn btn-primary btn-sm">Login / Sign Up</a></li>
+                <li style="display: none;" id="accountLink"><a href="./account.html" class="active">My Account</a></li>
+            </ul>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </header>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="padding-top: 120px; padding-bottom: 40px; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));">
+        <div class="container">
+            <h1 style="font-size: var(--text-5xl); font-weight: 700; margin-bottom: var(--space-md); color: white;">My Account</h1>
+            <p style="font-size: var(--text-lg); color: rgba(255,255,255,0.9);">Manage your bookings and wishlist</p>
+        </div>
+    </section>
 
     <!-- Account Section -->
-    <section class="account-section">
-        <div class="account-container">
-            <div class="account-sidebar">
-                <div class="user-info">
-                    <div class="user-avatar">
-                        <img src="./assets/files/default-avatar.png" alt="Profile" id="userAvatar">
-                        <div class="avatar-overlay">
-                            <i class="fas fa-user"></i>
-                        </div>
+    <section class="container">
+        <div style="display: grid; grid-template-columns: 250px 1fr; gap: var(--space-2xl); align-items: start;">
+            <!-- Sidebar -->
+            <div style="background: white; padding: var(--space-xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                <div style="text-align: center; margin-bottom: var(--space-xl); padding-bottom: var(--space-xl); border-bottom: 1px solid var(--border-light);">
+                    <div style="width: 80px; height: 80px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-md); color: white; font-size: var(--text-3xl); font-weight: 700;">
+                        <span id="userInitials">U</span>
                     </div>
-                    <h3 id="userName">User Name</h3>
-                    <p id="userEmail">user@example.com</p>
+                    <h3 id="userName" style="margin-bottom: var(--space-xs);">User</h3>
+                    <p id="userEmail" style="color: var(--text-secondary); font-size: var(--text-sm); margin: 0;">user@example.com</p>
                 </div>
-                <nav class="account-nav">
-                    <button class="nav-btn active" data-tab="bookings">My Bookings</button>
-                    <button class="nav-btn" data-tab="wishlist">Wishlist</button>
-                    <button class="nav-btn" data-tab="profile">Profile Settings</button>
+                
+                <nav style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                    <a href="#" class="tab-link active" data-tab="bookings" style="padding: var(--space-md); border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md); transition: all var(--transition-fast);">
+                        <i class='bx bx-calendar-check' style="font-size: 20px;"></i>
+                        <span>My Bookings</span>
+                    </a>
+                    <a href="#" class="tab-link" data-tab="wishlist" style="padding: var(--space-md); border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md); transition: all var(--transition-fast);">
+                        <i class='bx bx-heart' style="font-size: 20px;"></i>
+                        <span>Wishlist</span>
+                    </a>
+                    <a href="#" id="logoutBtn" style="padding: var(--space-md); border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md); color: var(--primary-color); transition: all var(--transition-fast);">
+                        <i class='bx bx-log-out' style="font-size: 20px;"></i>
+                        <span>Logout</span>
+                    </a>
                 </nav>
             </div>
-
-            <div class="account-content">
+            
+            <!-- Main Content -->
+            <div>
                 <!-- Bookings Tab -->
-                <div class="tab-content active" id="bookings">
-                    <h2>My Bookings</h2>
-                    <div class="bookings-grid" id="bookingsGrid">
-                        <!-- Bookings will be loaded here -->
+                <div class="tab-content active" id="bookingsTab">
+                    <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: var(--space-xl);">My Bookings</h2>
+                        
+                        <div id="bookingsList">
+                            <div style="text-align: center; padding: var(--space-3xl); color: var(--text-secondary);">
+                                <i class='bx bx-calendar-x' style="font-size: 64px; margin-bottom: var(--space-md);"></i>
+                                <p>No bookings yet</p>
+                                <a href="./package.html" class="btn btn-primary" style="margin-top: var(--space-lg);">Browse Packages</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
+                
                 <!-- Wishlist Tab -->
-                <div class="tab-content" id="wishlist">
-                    <h2>My Wishlist</h2>
-                    <div class="wishlist-grid" id="wishlistGrid">
-                        <!-- Wishlist items will be loaded here -->
+                <div class="tab-content" id="wishlistTab" style="display: none;">
+                    <div style="background: white; padding: var(--space-2xl); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <h2 style="margin-bottom: var(--space-xl);">My Wishlist</h2>
+                        
+                        <div id="wishlistGrid" class="grid grid-3">
+                            <!-- Wishlist items will be loaded here -->
+                        </div>
+                        
+                        <div id="emptyWishlist" style="text-align: center; padding: var(--space-3xl); color: var(--text-secondary); display: none;">
+                            <i class='bx bx-heart' style="font-size: 64px; margin-bottom: var(--space-md);"></i>
+                            <p>Your wishlist is empty</p>
+                            <a href="./package.html" class="btn btn-primary" style="margin-top: var(--space-lg);">Browse Packages</a>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Profile Settings Tab -->
-                <div class="tab-content" id="profile">
-                    <h2>Profile Settings</h2>
-                    <form class="profile-form" id="profileForm">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" id="fullName" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="tel" id="phone">
-                        </div>
-                        <div class="form-group">
-                            <label>Change Password</label>
-                            <input type="password" id="newPassword" placeholder="New Password">
-                        </div>
-                        <button type="submit" class="btn-primary">Save Changes</button>
-                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="./assets/js/account.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <img src="./assets/files/logo.png" alt="Adventour" style="height: 40px; margin-bottom: 20px;">
+                    <p style="color: rgba(255,255,255,0.8);">
+                        Your trusted partner for unforgettable travel experiences around the world.
+                    </p>
+                    <div class="social-links">
+                        <a href="info.html" class="social-link"><i class='bx bxl-facebook'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-instagram'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-twitter'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="info.html" class="social-link"><i class='bx bxl-github'></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./package.html">Packages</a></li>
+                        <li><a href="./locations.html">Destinations</a></li>
+                        <li><a href="./info.html">About Us</a></li>
+                        <li><a href="./contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety Information</a></li>
+                        <li><a href="#">Cancellation Options</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><a href="mailto:info@adventour.com">info@adventour.com</a></li>
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li style="color: rgba(255,255,255,0.8);">123 Travel Street<br>Adventure City, AC 12345</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Adventour All Rights Reserved.<br>Website developed by: SIT Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/auth.js"></script>
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                window.location.href = './index.html';
+                return;
+            }
+            
+            // Update user info
+            document.getElementById('userName').textContent = currentUser.firstName + ' ' + currentUser.lastName;
+            document.getElementById('userEmail').textContent = currentUser.email;
+            document.getElementById('userInitials').textContent = currentUser.firstName.charAt(0) + currentUser.lastName.charAt(0);
+            
+            // Tab switching
+            document.querySelectorAll('.tab-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tab = link.getAttribute('data-tab');
+                    
+                    // Update active states
+                    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+                    
+                    link.classList.add('active');
+                    if (tab === 'bookings') {
+                        document.getElementById('bookingsTab').style.display = 'block';
+                        loadBookings();
+                    } else if (tab === 'wishlist') {
+                        document.getElementById('wishlistTab').style.display = 'block';
+                        loadWishlist();
+                    }
+                });
+            });
+            
+            // Active tab styles
+            const style = document.createElement('style');
+            style.textContent = `
+                .tab-link.active {
+                    background: var(--bg-light);
+                    color: var(--primary-color);
+                    font-weight: 600;
+                }
+                .tab-link:hover {
+                    background: var(--bg-light);
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Load initial data
+            loadBookings();
+        });
+        
+        function loadBookings() {
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            const bookingsList = document.getElementById('bookingsList');
+            
+            if (bookings.length === 0) {
+                bookingsList.innerHTML = `
+                    <div style="text-align: center; padding: var(--space-3xl); color: var(--text-secondary);">
+                        <i class='bx bx-calendar-x' style="font-size: 64px; margin-bottom: var(--space-md);"></i>
+                        <p>No bookings yet</p>
+                        <a href="./package.html" class="btn btn-primary" style="margin-top: var(--space-lg);">Browse Packages</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            bookingsList.innerHTML = bookings.map(booking => `
+                <div style="background: var(--bg-light); padding: var(--space-lg); border-radius: var(--radius-md); margin-bottom: var(--space-lg);">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: var(--space-md);">
+                        <div>
+                            <h4 style="margin-bottom: var(--space-xs);">${booking.packageName || 'Travel Package'}</h4>
+                            <p style="color: var(--text-secondary); font-size: var(--text-sm);">Booking ID: ${booking.id}</p>
+                        </div>
+                        <span class="badge badge-success">Confirmed</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); margin-bottom: var(--space-md);">
+                        <div>
+                            <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-xs);">Check-in</p>
+                            <p style="font-weight: 600;">${booking.dateFrom || 'N/A'}</p>
+                        </div>
+                        <div>
+                            <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-xs);">Check-out</p>
+                            <p style="font-weight: 600;">${booking.dateTo || 'N/A'}</p>
+                        </div>
+                        <div>
+                            <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-xs);">Guests</p>
+                            <p style="font-weight: 600;">${booking.adults + booking.children + booking.infants} guests</p>
+                        </div>
+                        <div>
+                            <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-xs);">Total Price</p>
+                            <p style="font-weight: 600; color: var(--primary-color);">₹${booking.totalPrice.toFixed(0).toLocaleString('en-IN')}</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline btn-sm cancel-booking" data-booking-id="${booking.id}" style="width: 100%;">
+                        <i class='bx bx-x-circle'></i>
+                        Cancel Booking
+                    </button>
+                </div>
+            `).join('');
+            
+            // Add cancel event listeners
+            document.querySelectorAll('.cancel-booking').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const bookingId = btn.getAttribute('data-booking-id');
+                    if (confirm('Are you sure you want to cancel this booking?')) {
+                        cancelBooking(bookingId);
+                    }
+                });
+            });
+        }
+        
+        function cancelBooking(bookingId) {
+            let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            bookings = bookings.filter(b => b.id !== bookingId);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+            loadBookings();
+            authSystem.showNotification('Booking cancelled successfully', 'success');
+        }
+        
+        function loadWishlist() {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            const wishlistGrid = document.getElementById('wishlistGrid');
+            const emptyWishlist = document.getElementById('emptyWishlist');
+            
+            if (favorites.length === 0) {
+                wishlistGrid.innerHTML = '';
+                emptyWishlist.style.display = 'block';
+                return;
+            }
+            
+            emptyWishlist.style.display = 'none';
+            
+            // Mock package data (in real app, would fetch from database)
+            const packages = [
+                { id: '1', name: 'Bali Paradise', price: 208000, image: './assets/files/pac1.jpg', destination: 'Bali, Indonesia' },
+                { id: 'bali-paradise', name: 'Bali Paradise', price: 208000, image: './assets/files/pac1.jpg', destination: 'Bali, Indonesia' },
+                { id: '2', name: 'Swiss Alps Adventure', price: 266000, image: './assets/files/pac3.jpg', destination: 'Switzerland' },
+                { id: 'swiss-alps', name: 'Swiss Alps Adventure', price: 266000, image: './assets/files/pac3.jpg', destination: 'Switzerland' },
+                { id: '3', name: 'Roman Heritage', price: 150000, image: './assets/files/pac7.jpg', destination: 'Rome, Italy' },
+                { id: '4', name: 'Tokyo Experience', price: 233000, image: './assets/files/pac2.1.jpg', destination: 'Tokyo, Japan' },
+                { id: 'tokyo', name: 'Tokyo Experience', price: 233000, image: './assets/files/pac2.1.jpg', destination: 'Tokyo, Japan' },
+                { id: '5', name: 'Maldives Getaway', price: 183000, image: './assets/files/pac2.3.jpg', destination: 'Maldives' },
+                { id: 'maldives', name: 'Maldives Getaway', price: 183000, image: './assets/files/pac2.3.jpg', destination: 'Maldives' },
+                { id: '6', name: 'New Zealand Adventure', price: 291000, image: './assets/files/pac2.4.webp', destination: 'New Zealand' },
+                { id: 'new-zealand', name: 'New Zealand Adventure', price: 291000, image: './assets/files/pac2.4.webp', destination: 'New Zealand' }
+            ];
+            
+            wishlistGrid.innerHTML = favorites.map(favId => {
+                const pkg = packages.find(p => p.id === favId);
+                if (!pkg) return '';
+                
+                return `
+                    <div class="card">
+                        <div class="card-image-container">
+                            <img src="${pkg.image}" alt="${pkg.name}" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">${pkg.name}</h3>
+                            <p class="card-subtitle">${pkg.destination}</p>
+                            <div class="card-footer" style="margin-top: var(--space-lg);">
+                                <div class="card-price">
+                                    <span class="card-price-amount">₹${pkg.price.toLocaleString('en-IN')}</span>
+                                    <span class="card-price-unit">/ person</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline btn-sm remove-wishlist" data-item-id="${pkg.id}" style="width: 100%; margin-top: var(--space-md);">
+                                <i class='bx bx-trash'></i>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add remove event listeners
+            document.querySelectorAll('.remove-wishlist').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const itemId = btn.getAttribute('data-item-id');
+                    removeFromWishlist(itemId);
+                });
+            });
+        }
+        
+        function removeFromWishlist(itemId) {
+            let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            favorites = favorites.filter(id => id !== itemId);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            loadWishlist();
+            authSystem.showNotification('Removed from wishlist', 'info');
+        }
+    </script>
 </body>
 </html>
+
