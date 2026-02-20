@@ -81,4 +81,4 @@ Open index.html directly in your browser, or
 
 Run with VS Code Live Server extension.
    ```bash
-   git clone https://github.com/<your-username>/adventour.git
+   git clone https://github.com/vishalpatil-45/adventour.git
